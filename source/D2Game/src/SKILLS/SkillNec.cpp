@@ -1900,7 +1900,7 @@ int32_t __fastcall D2GAME_EventFunc04_6FD0E840(D2GameStrc* pGame, int32_t nEvent
     int32_t nDamagePercent = 0;
     if (pAttacker->dwUnitType == UNIT_MONSTER || MONSTERS_GetHirelingTypeId(pAttacker))
     {
-        if (pUnit->dwUnitType == UNIT_MONSTER)
+        if (pUnit->dwUnitType == UNIT_PLAYER)
         {
             nDamagePercent = SKILLS_EvaluateSkillFormula(pStatListOwner, pSkillsTxtRecord->dwCalc[1], nSkillId, nSkillLevel);
         }
@@ -2305,7 +2305,7 @@ int32_t __fastcall D2GAME_EventFunc26_6FD0F5E0(D2GameStrc* pGame, int32_t nEvent
         nNewHp = 256;
     }
 
-    STATLIST_SetUnitStat(pAttacker, STAT_HITPOINTS, nNewHp, 0);
+    STATLIST_SetUnitStat(pOwner, STAT_HITPOINTS, nNewHp, 0);
 
     pDamage->dwDmgTotal -= nReducedDamage;
 

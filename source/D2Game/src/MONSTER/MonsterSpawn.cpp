@@ -1538,7 +1538,7 @@ int32_t __fastcall sub_6FC6A810(D2GameStrc* pGame, D2ActiveRoomStrc* pRoom, int3
 //D2Game.0x6FC6A8C0
 int32_t __fastcall sub_6FC6A8C0(D2GameStrc* pGame, D2UnitStrc* pUnit, int32_t nMonsterId, int32_t nAnimMode, int32_t nCount, int32_t a6, int16_t nFlags)
 {
-    D2CoordStrc stru_6FD28B68[12] =
+    static constexpr D2CoordStrc stru_6FD28B68[12] =
     {
         {-1,-4 },
         { 1, 4 },
@@ -1575,7 +1575,7 @@ int32_t __fastcall sub_6FC6A8C0(D2GameStrc* pGame, D2UnitStrc* pUnit, int32_t nM
 
     for (int32_t i = 0; i < nCount; ++i)
     {
-        const int32_t nIndex = 2 * (nParam1 + nParam2);
+        const int32_t nIndex = nParam1 + nParam2;
 
         D2UnkMonCreateStrc monCreate = {};
         monCreate.nUnitGUID = 0;
