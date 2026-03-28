@@ -801,7 +801,7 @@ void __fastcall D2GAME_PACKETS_SendPacket0xA0_A1_A2_6FC3D610(D2ClientStrc* pClie
             packetA0.nHeader = 0xA0;
             packetA0.nStat = nPacketStatId;
             packetA0.dwGUID = pUnit ? pUnit->dwUnitId : -1;
-            packetA0.nValue = nDiff;
+            packetA0.nValue = nFullValue;
 
             D2GAME_PACKETS_SendPacket_6FC3C710(pClient, &packetA0, sizeof(packetA0));
         }

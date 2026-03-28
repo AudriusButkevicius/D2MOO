@@ -177,6 +177,18 @@ void __fastcall D2GAME_TARGETS_Last_6FC40380(D2GameStrc* pGame, D2UnitStrc* pUni
             pUnit->dwNodeIndex = 11;
             return;
         }
+        else
+        {
+            pTargetNode->unk0x0C->pNext = pTargetNode->pNext;
+            if (pTargetNode->pNext)
+            {
+                pTargetNode->pNext->unk0x0C = pTargetNode->unk0x0C;
+            }
+
+            D2_FREE_POOL(pGame->pMemoryPool, pTargetNode);
+            pUnit->dwNodeIndex = 11;
+            return;
+        }
     }
     else
     {

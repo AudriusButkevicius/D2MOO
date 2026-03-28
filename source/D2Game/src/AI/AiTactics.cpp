@@ -535,7 +535,34 @@ int32_t __fastcall AITACTICS_WalkCloseToUnit(D2GameStrc* pGame, D2UnitStrc* pUni
 //D2Game.0x6FCD09D0
 int32_t __fastcall sub_6FCD09D0(D2GameStrc* pGame, D2UnitStrc* pUnit, D2UnitStrc* pTarget, int32_t nMaxDistance)
 {
-	return AITACTICS_WalkCloseToUnit(pGame, pUnit, nMaxDistance);
+	int32_t nOffsetX = 0;
+	int32_t nOffsetY = 0;
+
+	const int32_t nTargetX = CLIENTS_GetUnitX(pTarget);
+	const int32_t nTargetY = CLIENTS_GetUnitY(pTarget);
+
+	if (ITEMS_RollRandomNumber(&pUnit->pSeed) & 1)
+	{
+		nOffsetX = nMaxDistance;
+		nOffsetY = ITEMS_RollLimitedRandomNumber(&pUnit->pSeed, nMaxDistance);
+	}
+	else
+	{
+		nOffsetX = ITEMS_RollLimitedRandomNumber(&pUnit->pSeed, nMaxDistance);
+		nOffsetY = nMaxDistance;
+	}
+
+	if (ITEMS_RollRandomNumber(&pUnit->pSeed) & 1)
+	{
+		nOffsetX = -nOffsetX;
+	}
+
+	if (ITEMS_RollRandomNumber(&pUnit->pSeed) & 1)
+	{
+		nOffsetY = -nOffsetY;
+	}
+
+	return AITACTICS_MoveToTarget(pGame, pUnit, nullptr, MONMODE_WALK, nTargetX + nOffsetX, nTargetY + nOffsetY, 1u, 0);
 }
 
 //D2Game.0x6FCD0B60

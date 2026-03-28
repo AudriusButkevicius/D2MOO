@@ -1948,7 +1948,7 @@ struct D2GSPacketSrv9D		//variable size
 //};
 
 
-struct D2GSPacketSrvStatAndGuid	//size of 0x08 (originally 0x07)
+struct D2GSPacketSrv9E		//size of 0x08 (originally 0x07)
 {
 	uint8_t nHeader;			//0x00
 	PacketStatId nStat;			//0x01
@@ -1956,11 +1956,37 @@ struct D2GSPacketSrvStatAndGuid	//size of 0x08 (originally 0x07)
 	uint8_t nValue;				//0x07 (Originally 0x06)
 };
 
-using D2GSPacketSrv9E = D2GSPacketSrvStatAndGuid;
-using D2GSPacketSrv9F = D2GSPacketSrvStatAndGuid;
-using D2GSPacketSrvA0 = D2GSPacketSrvStatAndGuid;
-using D2GSPacketSrvA1 = D2GSPacketSrvStatAndGuid;
-using D2GSPacketSrvA2 = D2GSPacketSrvStatAndGuid;
+struct D2GSPacketSrv9F		//size of 0x09 (originally 0x08)
+{
+	uint8_t nHeader;			//0x00
+	PacketStatId nStat;			//0x01
+	uint32_t dwGUID;			//0x03 (Originally 0x02)
+	uint16_t nValue;			//0x07 (Originally 0x06)
+};
+
+struct D2GSPacketSrvA0		//size of 0x0B (originally 0x0A)
+{
+	uint8_t nHeader;			//0x00
+	PacketStatId nStat;			//0x01
+	uint32_t dwGUID;			//0x03 (Originally 0x02)
+	uint32_t nValue;			//0x07 (Originally 0x06)
+};
+
+struct D2GSPacketSrvA1		//size of 0x08 (originally 0x07)
+{
+	uint8_t nHeader;			//0x00
+	PacketStatId nStat;			//0x01
+	uint32_t dwGUID;			//0x03 (Originally 0x02)
+	uint8_t nValue;				//0x07 (Originally 0x06)
+};
+
+struct D2GSPacketSrvA2		//size of 0x09 (originally 0x08)
+{
+	uint8_t nHeader;			//0x00
+	PacketStatId nStat;			//0x01
+	uint32_t dwGUID;			//0x03 (Originally 0x02)
+	uint16_t nValue;			//0x07 (Originally 0x06)
+};
 
 struct D2GSPacketSrvA3		//size of 0x18
 {
